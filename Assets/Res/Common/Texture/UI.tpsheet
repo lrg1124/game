@@ -1,0 +1,58 @@
+#
+# Sprite sheet data for Unity.
+#
+# To import these sprites into your Unity project, download "TexturePackerImporter":
+# http://www.codeandweb.com/texturepacker/unity
+#
+# $TexturePacker:SmartUpdate:53199faf046982d9ef4c99babe961ba9:905d9c7e9c87a55641d3bb519428f59c:64d56465927d50bb5400e4c66dc46a97$
+#
+:format=40300
+:texture=UI.png
+:size=1024x1024
+:pivotpoints=enabled
+:borders=disabled
+
+UI/Common/anniu_hong;719;532;169;62; 0.5;0.5; 0;0;0;0
+UI/Common/anniu_huang;713;466;169;62; 0.5;0.5; 0;0;0;0
+UI/Common/anniu_jia;605;10;112;58; 0.5;0.5; 0;0;0;0
+UI/Common/anniu_jian;721;114;112;58; 0.5;0.5; 0;0;0;0
+UI/Common/anniu_shouqi;0;82;89;90; 0.5;0.5; 0;0;0;0
+UI/Common/anniu_zhankai;0;205;89;90; 0.5;0.5; 0;0;0;0
+UI/Common/anniu_zi;713;400;169;62; 0.5;0.5; 0;0;0;0
+UI/Common/biaoqian_di;0;927;720;97; 0.5;0.5; 0;0;0;0
+UI/Common/biaoqian_weixuan;700;335;157;61; 0.5;0.5; 0;0;0;0
+UI/Common/biaoqian_xuanzhong;861;330;157;61; 0.5;0.5; 0;0;0;0
+UI/Common/biaoti_di;0;834;720;89; 0.5;0.5; 0;0;0;0
+UI/Common/chushou_jinbi;886;441;113;42; 0.5;0.5; 0;0;0;0
+UI/Common/chushou_zuanshi;886;395;113;42; 0.5;0.5; 0;0;0;0
+UI/Common/dengji_di;668;559;47;48; 0.5;0.5; 0;0;0;0
+UI/Common/dengjijingyangtiao_di;697;717;18;24; 0.5;0.5; 0;0;0;0
+UI/Common/dengjijingyantiao;697;673;15;20; 0.5;0.5; 0;0;0;0
+UI/Common/erjianniu_di;0;299;634;18; 0.5;0.5; 0;0;0;0
+UI/Common/erjibiaoti_di;137;10;464;58; 0.5;0.5; 0;0;0;0
+UI/Common/erjijiemian_di;0;321;651;188; 0.5;0.5; 0;0;0;0
+UI/Common/erjishuoming_di;697;697;16;16; 0.5;0.5; 0;0;0;0
+UI/Common/fanhui;721;14;142;54; 0.5;0.5; 0;0;0;0
+UI/Common/gongxihuode;724;904;297;120; 0.5;0.5; 0;0;0;0
+UI/Common/gouxuan;66;9;67;59; 0.5;0.5; 0;0;0;0
+UI/Common/gouxuan_di;0;6;62;62; 0.5;0.5; 0;0;0;0
+UI/Common/guanbi;892;525;114;69; 0.5;0.5; 0;0;0;0
+UI/Common/hongdian;194;269;26;26; 0.5;0.5; 0;0;0;0
+UI/Common/huode_di;0;513;664;94; 0.5;0.5; 0;0;0;0
+UI/Common/jinglian_di;93;267;97;28; 0.5;0.5; 0;0;0;0
+UI/Common/juese;724;598;295;302; 0.5;0.5; 0;0;0;0
+UI/Common/liebiao_di;0;611;693;154; 0.5;0.5; 0;0;0;0
+UI/Common/piliangshuzi_di;697;745;20;20; 0.5;0.5; 0;0;0;0
+UI/Common/pinjiexuanze_di;668;434;41;121; 0.5;0.5; 0;0;0;0
+UI/Common/quhuode;886;487;134;34; 0.5;0.5; 0;0;0;0
+UI/Common/shuoming_di;0;178;24;23; 0.5;0.5; 0;0;0;0
+UI/Common/shuzhi_di;697;658;11;11; 0.5;0.5; 0;0;0;0
+UI/Common/suipian;655;319;29;31; 0.5;0.5; 0;0;0;0
+UI/Common/tanchuanniu_di;655;389;41;41; 0.5;0.5; 0;0;0;0
+UI/Common/tips;93;236;584;27; 0.5;0.5; 0;0;0;0
+UI/Common/tubiao_di;688;176;154;155; 0.5;0.5; 0;0;0;0
+UI/Common/xingxing_an;638;287;28;28; 0.5;0.5; 0;0;0;0
+UI/Common/xingxing_liang;605;267;28;28; 0.5;0.5; 0;0;0;0
+UI/Common/xuanzejiangli_di;846;72;151;254; 0.5;0.5; 0;0;0;0
+UI/Common/ziyuanshuzi_di;655;354;30;31; 0.5;0.5; 0;0;0;0
+UI/Common/ziyuanxinxi_di;0;769;720;61; 0.5;0.5; 0;0;0;0
