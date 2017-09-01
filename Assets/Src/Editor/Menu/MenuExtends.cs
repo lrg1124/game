@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tool : MonoBehaviour {
+public class MenuExtends{
 
     [MenuItem("GameObject/UI/Image")]
     static void CreatImage() {
