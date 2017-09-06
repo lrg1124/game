@@ -135,7 +135,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Src\Editor\Extend.cs" />
+    <Compile Include="Assets\Src\Editor\Menu\MenuExtends.cs" />
+    <Compile Include="Assets\Src\Editor\Tool\Common\CommonToolPanel.cs" />
+    <Compile Include="Assets\Src\Editor\Tool\ToolPanel.cs" />
+    <Compile Include="Assets\Src\Editor\Tool\ToolWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Libs\TexturePacker\codeandweb.com\Editor\SettingsTexturePackerImporter.txt" />
