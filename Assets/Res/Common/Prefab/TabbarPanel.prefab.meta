@@ -1,8 +1,11 @@
 fileFormatVersion: 2
 guid: 8eb77a01ec42b93499da44b1de8a17d5
+labels:
+- Packer
 timeCreated: 1491631505
 licenseType: Pro
 NativeFormatImporter:
+  mainObjectFileID: -1
   userData: 
   assetBundleName: 
   assetBundleVariant: 
