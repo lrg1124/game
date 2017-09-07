@@ -2,6 +2,7 @@
 using UnityEditor;
 using Assets.Src.Editor.Tool;
 using Assets.Src.Editor.Tool.Common;
+using System;
 
 public class ToolWindow : EditorWindow {
 
@@ -15,7 +16,7 @@ public class ToolWindow : EditorWindow {
     int mSelectedIndex = 0;
 
     void OnEnable() {
-        mPanels = new ToolPanel[] { new CommonToolPanel(),};
+        mPanels = new ToolPanel[] { new CommonToolPanel()};
     }
 
     void OnGUI() {
@@ -23,13 +24,12 @@ public class ToolWindow : EditorWindow {
         if (mPanels.Length > 0) {
 
             var currPanel = mPanels[mSelectedIndex];
-            var newIndex = GUILayout.Toolbar(mLastTabIndex, mPanels.Stream().Map(i => i.Title).ToArray(), GUILayout.Height(25));
-            if (newIndex != mLastTabIndex) {
+            var newIndex = GUILayout.Toolbar(mSelectedIndex, mPanels.Stream().Map(i => i.Title).ToArray(), GUILayout.Height(25));
+            if (newIndex != mSelectedIndex) {
                 currPanel.OnDestroy();
                 currPanel = mPanels[newIndex];
                 currPanel.OnEnable();
-                mLastTabIndex = newIndex;
-                ToolkitSettings.Ins.Set(ToolkitSettingKeys.LAST_TAB_INDEX_KEY, mLastTabIndex);
+                mSelectedIndex = newIndex;
             }
 
             try {
@@ -45,15 +45,11 @@ public class ToolWindow : EditorWindow {
 
         }
 
-        if (GUI.changed) {
-            ToolkitSettings.Ins.Save();
-        }
-
     }
 
 
     void OnDestroy() {
-        mPanels[mLastTabIndex].OnDestroy();
+        mPanels[mSelectedIndex].OnDestroy();
     }
 
 }
