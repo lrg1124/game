@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 51ded2e0dcf4c274eab985eb7e718cf5
+labels:
+- Packer
 timeCreated: 1492397677
 licenseType: Pro
 TextureImporter:
@@ -759,5 +761,5 @@ TextureImporter:
     physicsShape: []
   spritePackingTag: 
   userData: 
-  assetBundleName: 
+  assetBundleName: common/texture/ui
   assetBundleVariant: 

@@ -29,7 +29,7 @@ namespace Assets.Src.Editor.Tool.Common {
                 GUILayout.BeginHorizontal();
 
                 if (GUILayout.Button("更新AB名称")) {
-                    RefreshResKeys();
+                    RefreshABName();
                 }
 
                 if (GUILayout.Button("增量打包AB")) {
@@ -45,52 +45,42 @@ namespace Assets.Src.Editor.Tool.Common {
 
         }
 
-
-        public static void RefreshResKeys() {
-            // 找到之前标记号好AB名称的路径
-            Dictionary<string, string> oldAbNameMap = new Dictionary<string, string>();
+        static void RefreshABName() {
+            Dictionary<string, string> oldABNameMap = new Dictionary<string, string>();
             foreach (var abName in AssetDatabase.GetAllAssetBundleNames()) {
                 foreach (var assetPath in AssetDatabase.GetAssetPathsFromAssetBundle(abName)) {
-                    oldAbNameMap[assetPath] = abName;
+                    oldABNameMap[assetPath] = abName;
                 }
             }
-            HashSet<string> pathSet = new HashSet<string>();
-            List<string> abNameList = new List<string>();
-            List<Object> assetList = new List<Object>();
-            foreach (var item in AssetDatabase.FindAssets("l:Pack")) {
-                var path = AssetDatabase.GUIDToAssetPath(item);
-                if (path.IndexOf(".") == -1) {
+            HashSet<string> assetPathSet = new HashSet<string>();
+            foreach (var assetGUID in AssetDatabase.FindAssets("l:Pack")) {
+                var assetPath = AssetDatabase.GUIDToAssetPath(assetGUID);
+                //不是res里面的文件不处理
+                if (!assetPath.StartsWith("Assets/Res/")) {
                     continue;
                 }
-                if (path.StartsWith("Assets/Res/") && pathSet.Add(path)) {
-                    var abName = path.Replace("Assets/Res/", "").ToLower();
+                //没有.后缀的文件不处理
+                if (assetPath.IndexOf(".") == -1) {
+                    continue;
+                }
+                if (assetPathSet.Add(assetPath)) {
+                    var abName = assetPath.Replace("Assets/Res/", "").ToLower();
                     abName = abName.Substring(0, abName.IndexOf("."));
-                    var import = AssetImporter.GetAtPath(path);
-                    if (import.assetBundleName != abName) {
-                        import.assetBundleName = abName;
-                        import.assetBundleVariant = "";
+                    var importer = AssetImporter.GetAtPath(assetPath);
+                    if (importer.assetBundleName != abName) {
+                        importer.assetBundleName = abName;
+                        importer.assetBundleVariant = "";
                     }
-                    abNameList.Add(abName);
-                    assetList.Add(AssetDatabase.LoadMainAssetAtPath(path));
+                    if (oldABNameMap.ContainsKey(assetPath)) {
+                        oldABNameMap.Remove(assetPath);
+                    }
                 }
             }
-            foreach (var path in pathSet) {
-                if (oldAbNameMap.ContainsKey(path)) {
-                    oldAbNameMap.Remove(path);
-                }
-            }
-            foreach (var abName in oldAbNameMap.Values) {
+            foreach (var abName in oldABNameMap.Values) {
                 AssetDatabase.RemoveAssetBundleName(abName, true);
             }
             AssetDatabase.RemoveUnusedAssetBundleNames();
-            abNameList.Sort();
-
-            var keyDataList = new List<KeyValuePair<string, Object>>();
-            for (int i = 0; i < abNameList.Count; i++) {
-                var keyData = new KeyValuePair<string, Object>(abNameList[i], assetList[i]);
-                keyDataList.Add(keyData);
-            }
-
+            AssetDatabase.Refresh();
         }
 
     }

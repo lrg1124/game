@@ -7,6 +7,5 @@ public class MText : MUI {
 
     // Update is called once per frame
     void Update() {
-
     }
 }
