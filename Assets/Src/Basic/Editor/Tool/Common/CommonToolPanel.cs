@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Src.Editor.Tool.Common {
@@ -29,15 +28,15 @@ namespace Assets.Src.Editor.Tool.Common {
                 GUILayout.BeginHorizontal();
 
                 if (GUILayout.Button("更新AB名称")) {
-                    RefreshABName();
+                    ResTool.RefreshABName();
                 }
 
                 if (GUILayout.Button("增量打包AB")) {
-                    //GameEditorTools.BuildReses(EditorUserBuildSettings.activeBuildTarget);
+                    ResTool.BuildReses(EditorUserBuildSettings.activeBuildTarget);
                 }
 
                 if (GUILayout.Button("重新打包AB")) {
-                    //GameEditorTools.BuildReses(EditorUserBuildSettings.activeBuildTarget, true);
+                    ResTool.BuildReses(EditorUserBuildSettings.activeBuildTarget,true);
                 }
 
                 GUILayout.EndHorizontal();
@@ -45,43 +44,7 @@ namespace Assets.Src.Editor.Tool.Common {
 
         }
 
-        static void RefreshABName() {
-            Dictionary<string, string> oldABNameMap = new Dictionary<string, string>();
-            foreach (var abName in AssetDatabase.GetAllAssetBundleNames()) {
-                foreach (var assetPath in AssetDatabase.GetAssetPathsFromAssetBundle(abName)) {
-                    oldABNameMap[assetPath] = abName;
-                }
-            }
-            HashSet<string> assetPathSet = new HashSet<string>();
-            foreach (var assetGUID in AssetDatabase.FindAssets("l:Pack")) {
-                var assetPath = AssetDatabase.GUIDToAssetPath(assetGUID);
-                //不是res里面的文件不处理
-                if (!assetPath.StartsWith("Assets/Res/")) {
-                    continue;
-                }
-                //没有.后缀的文件不处理
-                if (assetPath.IndexOf(".") == -1) {
-                    continue;
-                }
-                if (assetPathSet.Add(assetPath)) {
-                    var abName = assetPath.Replace("Assets/Res/", "").ToLower();
-                    abName = abName.Substring(0, abName.IndexOf("."));
-                    var importer = AssetImporter.GetAtPath(assetPath);
-                    if (importer.assetBundleName != abName) {
-                        importer.assetBundleName = abName;
-                        importer.assetBundleVariant = "";
-                    }
-                    if (oldABNameMap.ContainsKey(assetPath)) {
-                        oldABNameMap.Remove(assetPath);
-                    }
-                }
-            }
-            foreach (var abName in oldABNameMap.Values) {
-                AssetDatabase.RemoveAssetBundleName(abName, true);
-            }
-            AssetDatabase.RemoveUnusedAssetBundleNames();
-            AssetDatabase.Refresh();
-        }
+
 
     }
 }
